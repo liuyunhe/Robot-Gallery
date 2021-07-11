@@ -1,31 +1,19 @@
 import React from 'react'
 import styles from './Robot.module.css'
-import { appContext, appSetStateContext } from '../AppState'
+import { appContext } from '../AppState'
 import { useContext } from 'react'
+import { withAddToCart } from './AddToCart'
 
-interface RobotProps {
+export interface RobotProps {
   id: number
   name: string
   email: string
+  addToCart: (id, name) => void
 }
 
 // type React.FC<P = {}> = React.FunctionComponent<P>
-const Robot: React.FC<RobotProps> = ({ id, name, email }) => {
+const Robot: React.FC<RobotProps> = ({ id, name, email, addToCart }) => {
   const value = useContext(appContext)
-  const setState = useContext(appSetStateContext)
-
-  const addToCart = () => {
-    if (setState) {
-      setState((state) => {
-        return {
-          ...state,
-          shoppingCart: {
-            items: [...state.shoppingCart.items, { id, name }]
-          }
-        }
-      })
-    }
-  }
 
   return (
     <div className={styles.cardContainer}>
@@ -33,9 +21,9 @@ const Robot: React.FC<RobotProps> = ({ id, name, email }) => {
       <h2>{name}</h2>
       <p>{email}</p>
       <p>作者：{value.userName}</p>
-      <button onClick={addToCart}>加入购物车</button>
+      <button onClick={() => addToCart(id, name)}>加入购物车</button>
     </div>
   )
 }
 
-export default Robot
+export default withAddToCart(Robot)

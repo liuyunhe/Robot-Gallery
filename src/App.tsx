@@ -45,12 +45,6 @@ import { useState } from 'react'
 
 // componentWillUnmount() {}  可避免内存泄漏
 
-interface Props {}
-
-interface State {
-  robotGallery: any[]
-  count: number
-}
 const App: React.FC = (props) => {
   // setState
   const [count, setCount] = useState<number>(0)

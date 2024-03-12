@@ -96,9 +96,14 @@ const App: React.FC = (props) => {
         <div className={styles.robotList}>
           {robotGallery.map((r, i) =>
             i % 2 === 0 ? (
-              <RobotDiscout id={r.id} key={i} email={r.email} name={r.name} />
+              <RobotDiscout
+                id={r.id}
+                key={r.website}
+                email={r.email}
+                name={r.name}
+              />
             ) : (
-              <Robot id={r.id} key={i} email={r.email} name={r.name} />
+              <Robot id={r.id} key={r.website} email={r.email} name={r.name} />
             )
           )}
         </div>

@@ -14,7 +14,6 @@ export interface RobotProps {
 // type React.FC<P = {}> = React.FunctionComponent<P>
 const Robot: React.FC<RobotProps> = ({ id, name, email, addToCart }) => {
   const value = useContext(appContext)
-
   return (
     <div className={styles.cardContainer}>
       <img src={`https://robohash.org/${id}`} alt="robot" />

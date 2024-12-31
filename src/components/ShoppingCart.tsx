@@ -41,8 +41,8 @@ class ShoppingCart extends React.Component<Props, State> {
               style={{ display: this.state.isOpen ? 'block' : 'none' }}
             >
               <ul>
-                {value.shoppingCart.items.map((i) => (
-                  <li key={i.id}>{i.name}</li>
+                {value.shoppingCart.items.map((item, index) => (
+                  <li key={index}>{item.name}</li>
                 ))}
               </ul>
             </div>
